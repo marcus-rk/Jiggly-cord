@@ -8,4 +8,6 @@ module com.example.javafx_course_3 {
 
     opens com.example.javafx_jigglycord to javafx.fxml;
     exports com.example.javafx_jigglycord;
+    exports com.example.javafx_jigglycord.controllers;
+    opens com.example.javafx_jigglycord.controllers to javafx.fxml;
 }
