@@ -6,6 +6,6 @@ module com.example.javafx_course_3 {
     requires com.dlsc.formsfx;
     requires org.kordamp.bootstrapfx.core;
 
-    opens com.example.javafx_template to javafx.fxml;
-    exports com.example.javafx_template;
+    opens com.example.javafx_jigglycord to javafx.fxml;
+    exports com.example.javafx_jigglycord;
 }
