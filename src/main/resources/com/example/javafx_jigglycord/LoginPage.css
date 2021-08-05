@@ -24,6 +24,10 @@
     -fx-border-width: 2px;
     -fx-border-radius: 2px;
 }
+#loginButton:hover{
+    -fx-background-color: #fab6c6;
+    -fx-border-color: #fc8ea6;
+}
 
 /*   Settings for 'forgot password?' and 'Sign up'  */
 #more{

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
@@ -15,12 +16,20 @@
             <Image url="@LoginPage_Image/Jiggly_icon.png" />
          </image>
       </ImageView>
-      <TextField fx:id="usernameField" id="field" layoutX="53.0" layoutY="224.0" prefHeight="25.0" prefWidth="170.0" />
+      <TextField id="field" fx:id="usernameField" layoutX="53.0" layoutY="224.0" prefHeight="25.0" prefWidth="170.0" />
       <PasswordField id="field" layoutX="53.0" layoutY="277.0" prefHeight="25.0" prefWidth="170.0" />
       <Label layoutX="53.0" layoutY="207.0" text="Username" />
       <Label layoutX="53.0" layoutY="260.0" text="Password" />
       <Button fx:id="loginField" layoutX="53.0" layoutY="323.0" mnemonicParsing="false" onAction="#login" prefHeight="25.0" prefWidth="170.0" text="LOG IN" />
-      <Label id="more" fx:id="signUp" layoutX="182.0" layoutY="357.0" text="Sign up" />
-      <Label id="more" fx:id="forgotPassword" layoutX="53.0" layoutY="357.0" text="Forgot password?" />
+      <Button id="more" fx:id="forgotPassword" layoutX="53.0" layoutY="353.0" mnemonicParsing="false" onAction="#forgotPassword" prefHeight="25.0" prefWidth="96.0" style="-fx-background-color: Transparent;" text="Forgot password?" underline="true">
+         <padding>
+            <Insets left="-2.0" />
+         </padding>
+      </Button>
+      <Button id="more" fx:id="signUp" layoutX="173.0" layoutY="353.0" mnemonicParsing="false" onAction="#signUp" prefHeight="25.0" prefWidth="50.0" style="-fx-background-color: Transparent;" text="Sign Up" underline="true">
+         <padding>
+            <Insets right="-10.0" />
+         </padding>
+      </Button>
    </children>
 </AnchorPane>

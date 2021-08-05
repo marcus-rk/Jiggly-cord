@@ -12,14 +12,24 @@ public class LoginPageController {
     @FXML
     private Button loginButton;
     @FXML
-    private Label forgotPassword;
+    private Button forgotPassword;
     @FXML
-    private Label signUp;
+    private Button signUp;
 
 
     public void login(ActionEvent event){
         // TODO: Make a try-catch to see if registered.
         System.out.println("username: "+usernameField.getText());
+    }
+
+    public void forgotPassword(ActionEvent event){
+        // TODO: Make forgotPassword have functionallity
+        System.out.println("forgotPassword() has been pressed");
+    }
+
+    public void signUp(ActionEvent event){
+        // TODO: Make forgotPassword have functionallity
+        System.out.println("signUp() has been pressed");
     }
 
 }
