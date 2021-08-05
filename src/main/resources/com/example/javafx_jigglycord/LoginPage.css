@@ -22,7 +22,7 @@
 }
 
 /* Settings for login button*/
-#loginField{
+#loginButton{
     -fx-background-color: #f8d9e0;
     -fx-border-color: #f8c9d3;
     -fx-border-width: 2px;

@@ -24,6 +24,8 @@ public class App extends Application {
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("LoginPage.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
+
+        // Settings to application window
         stage.setResizable(false);
         stage.centerOnScreen();
         stage.setTitle("Jiggly-Cord v1");
