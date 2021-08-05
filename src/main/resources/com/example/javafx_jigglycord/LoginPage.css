@@ -2,10 +2,6 @@
     -fx-background-color: #3d4d56;
 }
 
-#windowStyle{
-    -fx-background-color: #3d4d56;
-}
-
 /*   Settings for text on login page  */
 .label{
     -fx-font-size: 12;
