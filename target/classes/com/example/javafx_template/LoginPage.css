@@ -1,0 +1,36 @@
+.root{
+    -fx-background-color: #3d4d56;
+}
+
+#windowStyle{
+    -fx-background-color: #3d4d56;
+}
+
+/*   Settings for text on login page  */
+.label{
+    -fx-font-size: 12;
+    -fx-text-fill: #f8d9e0;
+    -fx-font-weight: bold;
+}
+
+/* Settings for username and password fields */
+#field{
+    -fx-background-color: #008a8b;
+    -fx-border-color: #00797a;
+    -fx-border-width: 2px;
+    -fx-border-radius: 2px;
+}
+
+/* Settings for login button*/
+#loginField{
+    -fx-background-color: #f8d9e0;
+    -fx-border-color: #f8c9d3;
+    -fx-border-width: 2px;
+    -fx-border-radius: 2px;
+}
+
+/*   Settings for 'forgot password?' and 'Sign up'  */
+#more{
+    -fx-text-fill: #00898b;
+    -fx-underline: true;
+}
