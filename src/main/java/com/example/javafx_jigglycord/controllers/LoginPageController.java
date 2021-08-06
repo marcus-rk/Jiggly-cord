@@ -100,6 +100,10 @@ public class LoginPageController {
         Parent root = FXMLLoader.load((App.class.getResource("mainPage/MainPage.fxml")));
         Scene newScene = new Scene(root);
 
+        // Changing css-stylesheet to SignUp.css
+        String mainPageCSS = App.class.getResource("mainPage/MainPage.css").toExternalForm();
+        newScene.getStylesheets().add(mainPageCSS);
+
         stage.setScene(newScene);
         stage.show();
     }

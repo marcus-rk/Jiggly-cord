@@ -10,7 +10,6 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane prefHeight="800.0" prefWidth="1100.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.javafx_jigglycord.controllers.MainPageController">
    <children>
       <Pane layoutX="342.0" prefHeight="90.0" prefWidth="758.0" style="-fx-background-color: #3d4d56;">
@@ -27,11 +26,7 @@
             </ImageView>
          </children>
       </Pane>
-      <VBox id="dialogVBOX" layoutX="342.0" layoutY="90.0" prefHeight="621.0" prefWidth="758.0" style="-fx-background-color: #008a8b; -fx-alignment: bottom-center;">
-         <children>
-            <Pane prefHeight="87.0" prefWidth="758.0" style="-fx-background-color: #00797a;" />
-         </children>
-      </VBox>
+      <VBox fx:id="dialogVBOX" layoutX="342.0" layoutY="90.0" prefHeight="621.0" prefWidth="758.0" style="-fx-background-color: #008a8b;"/>
       <Pane id="writePane" layoutX="342.0" layoutY="711.0" prefHeight="90.0" prefWidth="758.0" style="-fx-background-color: #3d4d56;">
          <children>
             <TextField id="textField" fx:id="textField" layoutX="24.0" layoutY="33.0" prefHeight="25.0" prefWidth="661.0" />
