@@ -31,7 +31,7 @@ public class App extends Application {
         stage.setTitle("Jiggly-Cord v1");
 
         // Add icon to application window
-        Image iconImage = new Image(getClass().getResource("LoginPage_Image/Jiggly_icon.png").toExternalForm());
+        Image iconImage = new Image(getClass().getResource("images/Jiggly_icon.png").toExternalForm());
         stage.getIcons().add(iconImage);
 
         // Link css stylesheet to scene

@@ -17,6 +17,10 @@
     -fx-border-radius: 2px;
 }
 
+#passwordField #field{
+
+}
+
 #createUserButton{
     -fx-background-color: #f8d9e0;
     -fx-border-color: #f8c9d3;
