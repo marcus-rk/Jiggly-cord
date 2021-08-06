@@ -20,6 +20,7 @@ public class App extends Application {
         launch(args);
     }
 
+    //TODO: Make controllers change to their own scenes
     @Override
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("loginPage/LoginPage.fxml"));
