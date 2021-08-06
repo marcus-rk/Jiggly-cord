@@ -35,7 +35,7 @@ public class SignUpController {
 
         try {
             File file = new File("users/"+username+".txt");
-            if (file.createNewFile()) {
+            if (isValidUsername(username) && file.createNewFile()) {
                 writeEmailToFile(email,file);
                 writePassWordToFile(password,rePassword,file);
             } else {
@@ -46,6 +46,9 @@ public class SignUpController {
         }
     }
 
+    private boolean isValidUsername(String username){
+        return username.length() > 5;
+    }
 
     private void writeEmailToFile(String email, File file) throws IOException {
         try {
