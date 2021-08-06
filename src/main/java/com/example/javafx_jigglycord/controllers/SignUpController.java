@@ -30,7 +30,7 @@ public class SignUpController {
      * @throws IOException ...
      */
     public void createUser(ActionEvent event) throws IOException {
-        // TODO: Save all data correctly
+        // TODO: Save all data correctly (password)
         // TODO: Tell user if any errors
         // TODO: Do better username,email and password check
         // TODO: Make writers more efficient
@@ -42,6 +42,7 @@ public class SignUpController {
 
         boolean notNullInput = true;
 
+        // Check for valid user input
         if (!isValidUsername(username)){
             notNullInput = false;
         }
@@ -52,6 +53,7 @@ public class SignUpController {
             notNullInput = false;
         }
 
+        // Write user info to /users, if it does not exist already
         if (notNullInput){
             try {
                 File file = new File("users/"+username+".txt");
@@ -74,7 +76,7 @@ public class SignUpController {
     /**
      * Check if valid username
      * @param username ...
-     * @return ...
+     * @return true if valid or false if not
      */
     private boolean isValidUsername(@NotNull String username){
         if (username.length() >= 5)
@@ -145,11 +147,10 @@ public class SignUpController {
 
         printWriter.println(text);
 
-        // Can be done for global writers
+        // Can be done for global writers maybe
         printWriter.close();
         bufferedWriter.close();
         fileWriter.close();
-
     }
 
 
