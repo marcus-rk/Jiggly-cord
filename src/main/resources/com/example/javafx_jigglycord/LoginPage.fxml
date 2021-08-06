@@ -20,7 +20,7 @@
       <PasswordField id="field" layoutX="53.0" layoutY="277.0" prefHeight="25.0" prefWidth="170.0" />
       <Label layoutX="53.0" layoutY="207.0" text="Username" />
       <Label layoutX="53.0" layoutY="260.0" text="Password" />
-      <Button fx:id="loginField" layoutX="53.0" layoutY="323.0" mnemonicParsing="false" onAction="#login" prefHeight="25.0" prefWidth="170.0" text="LOG IN" />
+      <Button fx:id="loginButton" layoutX="53.0" layoutY="323.0" mnemonicParsing="false" onAction="#login" prefHeight="25.0" prefWidth="170.0" text="LOG IN" />
       <Button id="more" fx:id="forgotPassword" layoutX="53.0" layoutY="353.0" mnemonicParsing="false" onAction="#forgotPassword" prefHeight="25.0" prefWidth="96.0" style="-fx-background-color: Transparent;" text="Forgot password?" underline="true">
          <padding>
             <Insets left="-2.0" />

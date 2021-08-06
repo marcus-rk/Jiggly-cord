@@ -35,8 +35,8 @@ public class App extends Application {
         stage.getIcons().add(iconImage);
 
         // Link css stylesheet to scene
-        String css = this.getClass().getResource("LoginPage.css").toExternalForm();
-        scene.getStylesheets().add(css);
+        String logInCSS = this.getClass().getResource("LoginPage.css").toExternalForm();
+        scene.getStylesheets().add(logInCSS);
 
         // Should always be at the end of the start-method
         stage.setScene(scene);

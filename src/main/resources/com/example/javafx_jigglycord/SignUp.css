@@ -1,0 +1,36 @@
+.root{
+    -fx-background-color: #3d4d56;
+}
+
+/*   Settings for text on sign-ups page  */
+.label{
+    -fx-font-size: 12;
+    -fx-text-fill: #f8d9e0;
+    -fx-font-weight: bold;
+}
+
+/* Settings for username, email and password fields */
+#field{
+    -fx-background-color: #008a8b;
+    -fx-border-color: #00797a;
+    -fx-border-width: 2px;
+    -fx-border-radius: 2px;
+}
+
+#createUserButton{
+    -fx-background-color: #f8d9e0;
+    -fx-border-color: #f8c9d3;
+    -fx-border-width: 2px;
+    -fx-border-radius: 2px;
+}
+#createUserButton:hover{
+    -fx-background-color: #fab6c6;
+    -fx-border-color: #fc8ea6;
+}
+
+#backButton{
+    -fx-background-color: #485d67;
+    -fx-border-color: #4f626b;
+    -fx-border-width: 2px;
+    -fx-border-radius: 2px;
+}
