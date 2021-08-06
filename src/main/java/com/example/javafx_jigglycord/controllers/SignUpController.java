@@ -56,11 +56,14 @@ public class SignUpController {
         // Write user info to /users, if it does not exist already
         if (notNullInput){
             try {
-                File file = new File("users/"+username+".txt");
+                File file = new File("src/main/resources/users/"+username+".txt");
                 if (file.createNewFile()){
                     writeEmailToFile(email,file);
                     writePassWordToFile(password,file);
                     System.out.println("User: "+username+" has been created!");
+
+                    Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+                    loadLogIn(stage);
                 } else {
                     System.out.println("User: "+username+" already exists!");
                 }
@@ -166,6 +169,18 @@ public class SignUpController {
 
         String loginPageCSS = App.class.getResource("loginPage/LoginPage.css").toExternalForm();
         newScene.getStylesheets().add(loginPageCSS);
+
+        stage.setScene(newScene);
+        stage.show();
+    }
+
+    private void loadLogIn(@NotNull Stage stage) throws IOException {
+        Parent root = FXMLLoader.load((App.class.getResource("loginPage/LoginPage.fxml")));
+        Scene newScene = new Scene(root);
+
+        // Changing css-stylesheet to LoginPage.css
+        String loginCSS = App.class.getResource("loginPage/LoginPage.css").toExternalForm();
+        newScene.getStylesheets().add(loginCSS);
 
         stage.setScene(newScene);
         stage.show();
