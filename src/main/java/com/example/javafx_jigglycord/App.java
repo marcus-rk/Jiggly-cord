@@ -22,7 +22,7 @@ public class App extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("LoginPage.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("loginPage/LoginPage.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
 
         // Settings to application window
@@ -35,7 +35,7 @@ public class App extends Application {
         stage.getIcons().add(iconImage);
 
         // Link css stylesheet to scene
-        String logInCSS = this.getClass().getResource("LoginPage.css").toExternalForm();
+        String logInCSS = this.getClass().getResource("loginPage/LoginPage.css").toExternalForm();
         scene.getStylesheets().add(logInCSS);
 
         // Should always be at the end of the start-method

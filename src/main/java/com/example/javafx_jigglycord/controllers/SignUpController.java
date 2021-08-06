@@ -160,11 +160,11 @@ public class SignUpController {
      * @throws IOException ...
      */
     public void backToLogInPage(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load((App.class.getResource("LoginPage.fxml")));
+        Parent root = FXMLLoader.load((App.class.getResource("loginPage/LoginPage.fxml")));
         Scene newScene = new Scene(root);
         Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
 
-        String loginPageCSS = App.class.getResource("LoginPage.css").toExternalForm();
+        String loginPageCSS = App.class.getResource("loginPage/LoginPage.css").toExternalForm();
         newScene.getStylesheets().add(loginPageCSS);
 
         stage.setScene(newScene);
