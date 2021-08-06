@@ -17,7 +17,7 @@
          </image>
       </ImageView>
       <TextField id="field" fx:id="usernameField" layoutX="53.0" layoutY="224.0" prefHeight="25.0" prefWidth="170.0" />
-      <PasswordField id="field" layoutX="53.0" layoutY="277.0" prefHeight="25.0" prefWidth="170.0" />
+      <PasswordField id="field" fx:id="passwordField" layoutX="53.0" layoutY="277.0" prefHeight="25.0" prefWidth="170.0" />
       <Label layoutX="53.0" layoutY="207.0" text="Username" />
       <Label layoutX="53.0" layoutY="260.0" text="Password" />
       <Button fx:id="loginButton" layoutX="53.0" layoutY="323.0" mnemonicParsing="false" onAction="#login" prefHeight="25.0" prefWidth="170.0" text="LOG IN" />
