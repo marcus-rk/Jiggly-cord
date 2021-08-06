@@ -23,10 +23,16 @@ public class SignUpController {
     private TextField signUpRePasswordField;
 
 
+    /**
+     * Creating new user by getting username, email and password.
+     * @param event click on 'Create user'
+     * @throws IOException ...
+     */
     public void createUser(ActionEvent event) throws IOException {
         // TODO: Save all data correctly
         // TODO: Tell user if any errors
         // TODO: Do better username,email and password check
+        // TODO: Make writers more efficient
 
         String username = signUpUserField.getText();
         String email = signUpEmailField.getText();
@@ -46,10 +52,21 @@ public class SignUpController {
         }
     }
 
+    /**
+     * Check if valid username
+     * @param username ...
+     * @return ...
+     */
     private boolean isValidUsername(String username){
         return username.length() > 5;
     }
 
+    /**
+     * Check if email is valid, if so write it to userfile else return false
+     * @param email email from textfield
+     * @param file file wished to write to
+     * @throws IOException ...
+     */
     private void writeEmailToFile(String email, File file) throws IOException {
         try {
             if (isValidEmail(email)){
@@ -64,6 +81,13 @@ public class SignUpController {
     }
 
 
+    /**
+     * Check if password is valid, if so write it to userfile else return false
+     * @param password password from first password textfield
+     * @param rePassword password re-written from second password textfield
+     * @param file file wished to write to
+     * @throws IOException ...
+     */
     private void writePassWordToFile(String password, String rePassword, File file) throws IOException {
         try {
             if (isValidPassword(password,rePassword)){
@@ -77,7 +101,12 @@ public class SignUpController {
         return (password.equals(rePassword) && password.length()>=8);
     }
 
-
+    /**
+     * Function that makes it easier to write to a .txt file
+     * @param text text to be added
+     * @param file file wished to write to
+     * @throws IOException ...
+     */
     private void writeToUserFile(String text, File file) throws IOException {
         FileWriter fileWriter = new FileWriter(file,true);
         BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
@@ -92,7 +121,11 @@ public class SignUpController {
 
     }
 
-
+    /**
+     * Takes the user back to the login page
+     * @param event click on 'back'
+     * @throws IOException ...
+     */
     public void backToLogInPage(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load((App.class.getResource("LoginPage.fxml")));
         Scene newScene = new Scene(root);
