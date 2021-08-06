@@ -96,7 +96,7 @@ public class SignUpController {
      */
     private void writeEmailToFile(String email, File file) throws IOException {
         try {
-            writeToUserFile("email: "+email+",",file);
+            writeToUserFile("email:"+email+",",file);
         } catch (IOException e) {
             System.out.println("Failed to write email to file!");
         }
@@ -119,7 +119,7 @@ public class SignUpController {
      */
     private void writePassWordToFile(String password, File file) throws IOException {
         try {
-            writeToUserFile("password: "+password+",",file);
+            writeToUserFile("password:"+password+",",file);
         } catch (IOException e) {
             System.out.println("Failed to write password to file!");
         }
