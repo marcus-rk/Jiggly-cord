@@ -24,17 +24,19 @@ public class App extends Application {
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("LoginPage.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
+
+        // Settings to application window
         stage.setResizable(false);
         stage.centerOnScreen();
         stage.setTitle("Jiggly-Cord v1");
 
         // Add icon to application window
-        Image iconImage = new Image(getClass().getResource("LoginPage_Image/Jiggly_icon.png").toExternalForm());
+        Image iconImage = new Image(getClass().getResource("images/Jiggly_icon.png").toExternalForm());
         stage.getIcons().add(iconImage);
 
         // Link css stylesheet to scene
-        String css = this.getClass().getResource("LoginPage.css").toExternalForm();
-        scene.getStylesheets().add(css);
+        String logInCSS = this.getClass().getResource("LoginPage.css").toExternalForm();
+        scene.getStylesheets().add(logInCSS);
 
         // Should always be at the end of the start-method
         stage.setScene(scene);
