@@ -15,14 +15,14 @@
             </image>
         </ImageView>
         <TextField id="field" fx:id="signUpUserField" layoutX="53.0" layoutY="147.0" prefHeight="25.0" prefWidth="170.0" />
+      <TextField id="field" fx:id="signUpEmailField" layoutX="53.0" layoutY="195.0" prefHeight="25.0" prefWidth="170.0" promptText="must contain '@'" />
+      <TextField id="field" fx:id="signUpPasswordField" layoutX="53.0" layoutY="244.0" prefHeight="25.0" prefWidth="170.0" promptText="min. 8 char" />
+      <TextField id="field" fx:id="signUpRePasswordField" layoutX="53.0" layoutY="292.0" prefHeight="25.0" prefWidth="170.0" promptText="min. 8 char" />
         <Label layoutX="53.0" layoutY="130.0" text="Username" />
         <Label layoutX="53.0" layoutY="178.0" text="Email" />
-        <Button fx:id="createUserButton" layoutX="125.0" layoutY="336.0" mnemonicParsing="false" onAction="#createUser" prefHeight="25.0" prefWidth="98.0" text="Create user" />
-      <TextField id="field" fx:id="signUpPasswordField" layoutX="53.0" layoutY="244.0" prefHeight="25.0" prefWidth="170.0" promptText="min. 8 char" />
       <Label layoutX="53.0" layoutY="227.0" text="Password" />
       <Label layoutX="53.0" layoutY="275.0" text="Repeat password" />
-      <TextField id="field" fx:id="signUpRePasswordField" layoutX="53.0" layoutY="292.0" prefHeight="25.0" prefWidth="170.0" promptText="min. 8 char" />
-      <TextField id="field" fx:id="signUpEmailField" layoutX="53.0" layoutY="195.0" prefHeight="25.0" prefWidth="170.0" promptText="must contain '@'" />
+        <Button fx:id="createUserButton" layoutX="125.0" layoutY="336.0" mnemonicParsing="false" onAction="#createUser" prefHeight="25.0" prefWidth="98.0" text="Create user" />
       <Button fx:id="backButton" layoutX="53.0" layoutY="336.0" mnemonicParsing="false" onAction="#backToLogInPage" prefHeight="25.0" prefWidth="54.0" text="Back" />
     </children>
 </AnchorPane>

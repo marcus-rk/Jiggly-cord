@@ -9,6 +9,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import org.jetbrains.annotations.NotNull;
 
 import java.io.*;
 
@@ -39,17 +40,35 @@ public class SignUpController {
         String password = signUpPasswordField.getText();
         String rePassword = signUpRePasswordField.getText();
 
-        try {
-            File file = new File("users/"+username+".txt");
-            if (isValidUsername(username) && file.createNewFile()) {
-                writeEmailToFile(email,file);
-                writePassWordToFile(password,rePassword,file);
-            } else {
-                System.out.println("File already exists.");
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
+        boolean notNullInput = true;
+
+        if (!isValidUsername(username)){
+            notNullInput = false;
         }
+        if (!isValidEmail(email)){
+            notNullInput = false;
+        }
+        if (!isValidPassword(password,rePassword)){
+            notNullInput = false;
+        }
+
+        if (notNullInput){
+            try {
+                File file = new File("users/"+username+".txt");
+                if (file.createNewFile()){
+                    writeEmailToFile(email,file);
+                    writePassWordToFile(password,file);
+                    System.out.println("User: "+username+" has been created!");
+                } else {
+                    System.out.println("User: "+username+" already exists!");
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        } else {
+            System.out.println("All fields must be filled correctly");
+        }
+
     }
 
     /**
@@ -57,9 +76,15 @@ public class SignUpController {
      * @param username ...
      * @return ...
      */
-    private boolean isValidUsername(String username){
-        return username.length() > 5;
+    private boolean isValidUsername(@NotNull String username){
+        if (username.length() >= 5)
+            return true;
+        else {
+            System.out.println("Invalid username");
+            return false;
+        }
     }
+
 
     /**
      * Check if email is valid, if so write it to userfile else return false
@@ -69,37 +94,43 @@ public class SignUpController {
      */
     private void writeEmailToFile(String email, File file) throws IOException {
         try {
-            if (isValidEmail(email)){
-                writeToUserFile(email,file);
-            }
+            writeToUserFile("email: "+email+",",file);
         } catch (IOException e) {
-            e.printStackTrace();
+            System.out.println("Failed to write email to file!");
         }
     }
-    private boolean isValidEmail(String email){
-        return email.contains("@");
+    private boolean isValidEmail(@NotNull String email){
+        if (email.contains("@"))
+            return true;
+        else {
+            System.out.println("Invalid email");
+            return false;
+        }
     }
 
 
     /**
      * Check if password is valid, if so write it to userfile else return false
      * @param password password from first password textfield
-     * @param rePassword password re-written from second password textfield
      * @param file file wished to write to
      * @throws IOException ...
      */
-    private void writePassWordToFile(String password, String rePassword, File file) throws IOException {
+    private void writePassWordToFile(String password, File file) throws IOException {
         try {
-            if (isValidPassword(password,rePassword)){
-                writeToUserFile(password,file);
-            }
+            writeToUserFile("password: "+password+",",file);
         } catch (IOException e) {
-            e.printStackTrace();
+            System.out.println("Failed to write password to file!");
         }
     }
-    private boolean isValidPassword(String password,String rePassword){
-        return (password.equals(rePassword) && password.length()>=8);
+    private boolean isValidPassword(@NotNull String password,String rePassword){
+        if ((password.equals(rePassword) && password.length()>=8))
+            return true;
+        else {
+            System.out.println("Invalid password");
+            return false;
+        }
     }
+
 
     /**
      * Function that makes it easier to write to a .txt file
@@ -120,6 +151,7 @@ public class SignUpController {
         fileWriter.close();
 
     }
+
 
     /**
      * Takes the user back to the login page
