@@ -34,7 +34,7 @@ public class LoginPageController {
         boolean validLogIn = true;
 
         try {
-            File userFile = new File("users/"+username+".txt");
+            File userFile = new File("src/main/resources/users/"+username+".txt");
 
             // Check if user exists
             boolean userExists = userFile.exists();
@@ -97,18 +97,18 @@ public class LoginPageController {
 
 
     private void loadMainPage(@NotNull Stage stage) throws IOException {
-        Parent root = FXMLLoader.load((App.class.getResource("MainPage.fxml")));
+        Parent root = FXMLLoader.load((App.class.getResource("mainPage/MainPage.fxml")));
         Scene newScene = new Scene(root);
 
         stage.setScene(newScene);
         stage.show();
     }
     private void loadSignUpPage(@NotNull Stage stage) throws IOException {
-        Parent root = FXMLLoader.load((App.class.getResource("SignUp.fxml")));
+        Parent root = FXMLLoader.load((App.class.getResource("signUpPage/SignUp.fxml")));
         Scene newScene = new Scene(root);
 
         // Changing css-stylesheet to SignUp.css
-        String signUpCSS = App.class.getResource("SignUp.css").toExternalForm();
+        String signUpCSS = App.class.getResource("signUpPage/SignUp.css").toExternalForm();
         newScene.getStylesheets().add(signUpCSS);
 
         stage.setScene(newScene);

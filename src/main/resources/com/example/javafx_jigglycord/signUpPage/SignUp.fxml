@@ -12,7 +12,7 @@
     <children>
         <ImageView fitHeight="96.0" fitWidth="91.0" layoutX="93.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true">
             <image>
-                <Image url="@images/Jiggly_icon.png" />
+                <Image url="@../images/Jiggly_icon.png" />
             </image>
         </ImageView>
         <TextField id="field" fx:id="signUpUserField" layoutX="53.0" layoutY="147.0" prefHeight="25.0" prefWidth="170.0" />
