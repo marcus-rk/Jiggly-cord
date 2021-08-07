@@ -1,6 +1,7 @@
 package com.example.javafx_jigglycord.controllers;
 
 import javafx.fxml.FXML;
+import javafx.geometry.Pos;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
@@ -22,6 +23,7 @@ public class MainPageController {
     @FXML
     void addDialogBoxToVBOX() {
         // Updates dialogVBOX with new DialogBox
+        dialogVBOX.setAlignment(Pos.BOTTOM_CENTER); // From bottom -> top
         dialogVBOX.getChildren().add(createDialogBox());
     }
 
