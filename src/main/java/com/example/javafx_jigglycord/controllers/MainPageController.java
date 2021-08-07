@@ -19,18 +19,19 @@ public class MainPageController {
 
 
     public void sendMessage() throws IOException {
-        addDialogBoxToVBOX();
+        textField.getText();
+        addDialogBoxToVBOX(textField.getText());
         textField.clear();
     }
 
     @FXML
-    void addDialogBoxToVBOX() throws IOException {
+    void addDialogBoxToVBOX(String inputText) throws IOException {
         // Updates dialogVBOX with new DialogBox
         dialogVBOX.setAlignment(Pos.BOTTOM_CENTER); // From bottom -> top
-        dialogVBOX.getChildren().add(createDialogBox());
+        dialogVBOX.getChildren().add(createDialogBox(inputText));
     }
 
-    private Pane createDialogBox() throws IOException {
+    private Pane createDialogBox(String inputText) throws IOException {
         UserController currentUser = UserController.getUserFromFile(Global.currentUserFile);
 
         // Create new pane
@@ -41,7 +42,7 @@ public class MainPageController {
         // Add text to pain
         Label text = new Label();
         String usernameString = "  "+currentUser.getUsername()+": ";
-        text.setText(usernameString+textField.getText());
+        text.setText(usernameString+inputText);
         text.setId("dialogPaneText");
         pane.getChildren().add(text);
 
