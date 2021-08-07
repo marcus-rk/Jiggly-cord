@@ -11,6 +11,7 @@ public class UserController {
     public UserController(File userFile, String username,String email, String password) throws IOException {
         this.userFile = userFile;
         this.username = username;
+        this.email = email;
         this.password = password;
 
         try {
