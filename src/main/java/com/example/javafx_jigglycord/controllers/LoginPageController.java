@@ -16,7 +16,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.io.*;
 
-public class LoginPageController {
+public class LoginPageController extends Controller {
     @FXML
     private TextField usernameField;
     @FXML
@@ -28,6 +28,15 @@ public class LoginPageController {
     @FXML
     private Button signUp;
 
+    /**
+     * Updating to Sign-Up scene with fxml and css
+     * @param event button clicked
+     * @throws IOException ...
+     */
+    public void signUp(ActionEvent event) throws IOException {
+        Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        super.loadSignUpPage(stage);
+    }
 
     public void login(ActionEvent event) throws IOException {
         String username = usernameField.getText();
@@ -54,7 +63,7 @@ public class LoginPageController {
             if (validLogIn){
                 Global.currentUserFile = userFile;
                 Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-                loadMainPage(stage);
+                super.loadMainPage(stage);
             }
         } catch (FileNotFoundException e){
             if (username.isEmpty() || password.isEmpty()) System.out.println("Please fill out all fields");
@@ -86,40 +95,5 @@ public class LoginPageController {
         // TODO: Make forgotPassword have functionallity
         System.out.println("forgotPassword() has been pressed");
     }
-
-    /**
-     * Updating to Sign-Up scene with fxml and css
-     * @param event button clicked
-     * @throws IOException ...
-     */
-    public void signUp(ActionEvent event) throws IOException {
-        Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        loadSignUpPage(stage);
-    }
-
-
-    private void loadMainPage(@NotNull Stage stage) throws IOException {
-        Parent root = FXMLLoader.load((App.class.getResource("mainPage/MainPage.fxml")));
-        Scene newScene = new Scene(root);
-
-        // Changing css-stylesheet to SignUp.css
-        String mainPageCSS = App.class.getResource("mainPage/MainPage.css").toExternalForm();
-        newScene.getStylesheets().add(mainPageCSS);
-
-        stage.setScene(newScene);
-        stage.show();
-    }
-    private void loadSignUpPage(@NotNull Stage stage) throws IOException {
-        Parent root = FXMLLoader.load((App.class.getResource("signUpPage/SignUp.fxml")));
-        Scene newScene = new Scene(root);
-
-        // Changing css-stylesheet to SignUp.css
-        String signUpCSS = App.class.getResource("signUpPage/SignUp.css").toExternalForm();
-        newScene.getStylesheets().add(signUpCSS);
-
-        stage.setScene(newScene);
-        stage.show();
-    }
-
 
 }
