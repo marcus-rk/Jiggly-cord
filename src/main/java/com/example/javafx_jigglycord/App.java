@@ -8,12 +8,6 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-/**
- * This is a template to make JavaFX projects (with or without CSS).
- * Remember to make use of MVC and SceneBuilder.
- * Open SceneBuilder by right-clicking on the App.xml file in the 'resources' folder
- */
-
 public class App extends Application {
 
     public static void main(String[] args) {

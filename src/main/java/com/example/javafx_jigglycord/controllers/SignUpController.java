@@ -58,9 +58,7 @@ public class SignUpController {
             try {
                 File file = new File("src/main/resources/users/"+username+".txt");
                 if (file.createNewFile()){
-                    writeEmailToFile(email,file);
-                    writePassWordToFile(password,file);
-                    System.out.println("User: "+username+" has been created!");
+                    new UserController(file,username,email,password);
 
                     Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
                     loadLogIn(stage);
@@ -76,6 +74,7 @@ public class SignUpController {
 
     }
 
+
     /**
      * Check if valid username
      * @param username ...
@@ -90,20 +89,6 @@ public class SignUpController {
         }
     }
 
-
-    /**
-     * Check if email is valid, if so write it to userfile else return false
-     * @param email email from textfield
-     * @param file file wished to write to
-     * @throws IOException ...
-     */
-    private void writeEmailToFile(String email, File file) throws IOException {
-        try {
-            writeToUserFile("email:"+email+",",file);
-        } catch (IOException e) {
-            System.out.println("Failed to write email to file!");
-        }
-    }
     private boolean isValidEmail(@NotNull String email){
         if (email.contains("@"))
             return true;
@@ -113,20 +98,6 @@ public class SignUpController {
         }
     }
 
-
-    /**
-     * Check if password is valid, if so write it to userfile else return false
-     * @param password password from first password textfield
-     * @param file file wished to write to
-     * @throws IOException ...
-     */
-    private void writePassWordToFile(String password, File file) throws IOException {
-        try {
-            writeToUserFile("password:"+password+",",file);
-        } catch (IOException e) {
-            System.out.println("Failed to write password to file!");
-        }
-    }
     private boolean isValidPassword(@NotNull String password,String rePassword){
         if ((password.equals(rePassword) && password.length()>=8))
             return true;
@@ -134,26 +105,6 @@ public class SignUpController {
             System.out.println("Invalid password");
             return false;
         }
-    }
-
-
-    /**
-     * Function that makes it easier to write to a .txt file
-     * @param text text to be added
-     * @param file file wished to write to
-     * @throws IOException ...
-     */
-    private void writeToUserFile(String text, File file) throws IOException {
-        FileWriter fileWriter = new FileWriter(file,true);
-        BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
-        PrintWriter printWriter = new PrintWriter(bufferedWriter);
-
-        printWriter.println(text);
-
-        // Can be done for global writers maybe
-        printWriter.close();
-        bufferedWriter.close();
-        fileWriter.close();
     }
 
 

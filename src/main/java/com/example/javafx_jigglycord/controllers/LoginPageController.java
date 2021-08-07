@@ -1,6 +1,7 @@
 package com.example.javafx_jigglycord.controllers;
 
 import com.example.javafx_jigglycord.App;
+import com.example.javafx_jigglycord.Global;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -51,6 +52,7 @@ public class LoginPageController {
 
             // Load main page if valid login
             if (validLogIn){
+                Global.currentUserFile = userFile;
                 Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
                 loadMainPage(stage);
             }
