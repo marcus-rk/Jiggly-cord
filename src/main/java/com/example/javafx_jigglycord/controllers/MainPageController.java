@@ -1,6 +1,5 @@
 package com.example.javafx_jigglycord.controllers;
 
-import com.example.javafx_jigglycord.Global;
 import javafx.fxml.FXML;
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;
@@ -11,7 +10,10 @@ import javafx.scene.layout.VBox;
 
 import java.io.IOException;
 
-public class MainPageController {
+/**
+ * Controller that controls the (whole) main page of the application for now.
+ */
+public class MainPageController extends Controller {
     @FXML
     private VBox dialogVBOX;
     @FXML
@@ -32,14 +34,14 @@ public class MainPageController {
     }
 
     private Pane createDialogBox(String inputText) throws IOException {
-        UserController currentUser = UserController.getUserFromFile(Global.currentUserFile);
+        UserController currentUser = super.getCurrentUserController();
 
         // Create new pane
         StackPane pane = new StackPane();
         pane.setPrefSize(100.0,20.0);
         pane.setId("dialogPane");
 
-        // Add text to pain
+        // Add text (Label) to pane
         Label text = new Label();
         String usernameString = "  "+currentUser.getUsername()+": ";
         text.setText(usernameString+inputText);

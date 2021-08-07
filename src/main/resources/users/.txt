@@ -1,3 +1,2 @@
 email:test@test.dk,
 password:1,
-isOnline:false,
