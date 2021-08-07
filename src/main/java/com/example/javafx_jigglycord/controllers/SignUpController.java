@@ -49,12 +49,9 @@ public class SignUpController extends Controller {
         String password = signUpPasswordField.getText();
         String rePassword = signUpRePasswordField.getText();
 
-        boolean notNullInput = true;
-
         // Check for valid user input
-        if (!isValidUsername(username)){
-            notNullInput = false;
-        }
+        boolean notNullInput = isValidUsername(username);
+
         if (!isValidEmail(email)){
             notNullInput = false;
         }

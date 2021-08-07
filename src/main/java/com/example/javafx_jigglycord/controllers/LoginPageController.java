@@ -16,7 +16,7 @@ import java.io.*;
  * Controller class which responsibility is to check for, if user is valid
  * and log in.
  */
-public class LoginPageController extends Controller {
+public class LoginPageController extends FileManager {
     @FXML
     private TextField usernameField;
     @FXML
