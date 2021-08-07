@@ -1,13 +1,9 @@
 package com.example.javafx_jigglycord.controllers;
 
-import com.example.javafx_jigglycord.App;
 import com.example.javafx_jigglycord.Global;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
@@ -16,6 +12,10 @@ import org.jetbrains.annotations.NotNull;
 
 import java.io.*;
 
+/**
+ * Controller class which responsibility is to check for, if user is valid
+ * and log in.
+ */
 public class LoginPageController extends Controller {
     @FXML
     private TextField usernameField;

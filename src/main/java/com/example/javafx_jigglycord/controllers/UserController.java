@@ -4,12 +4,14 @@ import org.jetbrains.annotations.NotNull;
 
 import java.io.*;
 
-public class UserController {
+/**
+ * Controller class which responsibility is to create users and process user infomation.
+ */
+public class UserController extends Controller {
     private File userFile;
     private String username;
     private String email;
     private String password;
-    private boolean isOnline;
 
     public UserController(File userFile, String username,String email, String password) throws IOException {
         this.userFile = userFile;
@@ -20,7 +22,6 @@ public class UserController {
         try {
             writeToUserFile("email:"+email+",",userFile);
             writeToUserFile("password:"+password+",",userFile);
-            writeToUserFile("isOnline:"+false+",",userFile);
             System.out.println("User: "+username+" has been created!");
         } catch (IOException e) {
             System.out.println("Failed to save user");
@@ -28,11 +29,10 @@ public class UserController {
     }
 
     // Overload
-    private UserController(File userFile, String username,String email,boolean isOnline) throws IOException {
+    private UserController(File userFile, String username,String email) throws IOException {
         this.userFile = userFile;
         this.username = username;
         this.email = email;
-        this.isOnline = isOnline;
     }
     public String getUsername() {
         return username;
@@ -42,7 +42,6 @@ public class UserController {
         BufferedReader reader = new BufferedReader(new FileReader(userFile));
         String readUsername = userFile.getName().replace(".txt","");
         String readEmail = null;
-        boolean readIsOnline = false;
 
         try{
             String line;
@@ -52,17 +51,12 @@ public class UserController {
                     int lastIndex = line.indexOf(',');
                     readEmail = line.substring(0,lastIndex);
                 }
-                if (line.contains("isOnline:")){
-                    line=line.replace("isOnline:","");
-                    int lastIndex = line.indexOf(',');
-                    readIsOnline = line.substring(0,lastIndex).equals("true");
-                }
             }
         }
         catch (IOException e){
             e.printStackTrace();
         }
-        return new UserController(userFile,readUsername,readEmail,readIsOnline);
+        return new UserController(userFile,readUsername,readEmail);
     }
 
     /**
@@ -84,55 +78,18 @@ public class UserController {
         fileWriter.close();
     }
 
-//    // TODO
-//    private void replaceInUserFile(String tag, String text,File file)throws IOException {
-//        String username = file.getName().replace(".txt","");
-//        String email = UserController.getUserFromFile(file).email;
-//        String password = UserController.getUserFromFile(file).password;
-//        boolean isOnline = UserController.getUserFromFile(file).isOnline;
-//        File newFile = new File("src/main/resources/users/"+username+".txt");
-//    }
-
-
-//    /**
-//     * Changes isOnline for user to true or false
-//     * @param onlineStatus if
-//     * @throws IOException
-//     */
-//    protected void setIsOnline(boolean onlineStatus) throws IOException {
-//        BufferedReader reader = new BufferedReader(new FileReader(userFile));
-//
-//        // SHOULD BE VALIDMATCH()
-//        if(validMatch()){
-//            String line;
-//            while ((line=reader.readLine())!=null){
-//                if (line.contains("isOnline:")){
-//                    line=line.replace("isOnline:","");
-//                    int lastIndex = line.indexOf(',');
-//
-//                    String newLine = line.substring(0,lastIndex);
-//
-//                    if (newLine.equals("false") && onlineStatus){
-//                        isOnline = true;
-//                        replaceInUserFile("isOnline:","true",userFile);
-//                    } else if (newLine.equals("true") && !onlineStatus){
-//                        isOnline = false;
-//                        replaceInUserFile("isOnline:","false",userFile);
-//                    }
-//
-//                }
-//            }
-//        }
-//    }
-
     /**
      * Check if userFile/username matches with password
-     * @return true if correct
-     * @throws IOException ...
+     * @return true: if userfile matches with currentUsers password
+     *         false: if userfile do not match with currentUsers password
+     * @throws IOException StackTrace
      */
-    private boolean validMatch() throws IOException {
+    protected boolean validMatch(File userFile) throws IOException {
+        UserController currentUser = super.getCurrentUserController();
         BufferedReader reader = new BufferedReader(new FileReader(userFile));
         boolean passwordMatch = false;
+
+        String password = currentUser.password;
 
         try{
             String line;

@@ -1,19 +1,19 @@
 package com.example.javafx_jigglycord.controllers;
 
-import com.example.javafx_jigglycord.App;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.*;
 
-public class SignUpController {
+/**
+ * Controller which responsibility is to check user input for sign up page,
+ * and then create a new user, with UserController class.
+ */
+public class SignUpController extends Controller {
     @FXML
     private TextField signUpUserField;
     @FXML
@@ -23,13 +23,22 @@ public class SignUpController {
     @FXML
     private TextField signUpRePasswordField;
 
+    /**
+     * Takes the user back to the login page
+     * @param event click on 'back' button
+     * @throws IOException ...
+     */
+    public void backToLogInPage(ActionEvent event) throws IOException {
+        Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        super.loadLogIn(stage);
+    }
 
     /**
      * Creating new user by getting username, email and password.
      * @param event click on 'Create user'
      * @throws IOException ...
      */
-    public void createUser(ActionEvent event) throws IOException {
+    public void signUpUser(ActionEvent event) throws IOException {
         // TODO: Save all data correctly (password)
         // TODO: Tell user if any errors
         // TODO: Do better username,email and password check
@@ -53,7 +62,7 @@ public class SignUpController {
             notNullInput = false;
         }
 
-        // Write user info to /users, if it does not exist already
+        // Create new user/usercontroller file to 'users' package, if it does not exist already
         if (notNullInput){
             try {
                 File file = new File("src/main/resources/users/"+username+".txt");
@@ -61,7 +70,7 @@ public class SignUpController {
                     new UserController(file,username,email,password);
 
                     Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-                    loadLogIn(stage);
+                    super.loadLogIn(stage);
                 } else {
                     System.out.println("User: "+username+" already exists!");
                 }
@@ -75,11 +84,6 @@ public class SignUpController {
     }
 
 
-    /**
-     * Check if valid username
-     * @param username ...
-     * @return true if valid or false if not
-     */
     private boolean isValidUsername(@NotNull String username){
         if (username.length() >= 5)
             return true;
@@ -105,36 +109,6 @@ public class SignUpController {
             System.out.println("Invalid password");
             return false;
         }
-    }
-
-
-    /**
-     * Takes the user back to the login page
-     * @param event click on 'back'
-     * @throws IOException ...
-     */
-    public void backToLogInPage(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load((App.class.getResource("loginPage/LoginPage.fxml")));
-        Scene newScene = new Scene(root);
-        Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-
-        String loginPageCSS = App.class.getResource("loginPage/LoginPage.css").toExternalForm();
-        newScene.getStylesheets().add(loginPageCSS);
-
-        stage.setScene(newScene);
-        stage.show();
-    }
-
-    private void loadLogIn(@NotNull Stage stage) throws IOException {
-        Parent root = FXMLLoader.load((App.class.getResource("loginPage/LoginPage.fxml")));
-        Scene newScene = new Scene(root);
-
-        // Changing css-stylesheet to LoginPage.css
-        String loginCSS = App.class.getResource("loginPage/LoginPage.css").toExternalForm();
-        newScene.getStylesheets().add(loginCSS);
-
-        stage.setScene(newScene);
-        stage.show();
     }
 
 }
