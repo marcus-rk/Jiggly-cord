@@ -8,7 +8,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-import org.jetbrains.annotations.NotNull;
 
 import java.io.*;
 
@@ -48,20 +47,21 @@ public class LoginPageController extends FileManager {
 
             // Check if user exists
             boolean userExists = userFile.exists();
+
             if (!userExists && !username.isEmpty()){
                 validLogIn = false;
                 System.out.println("User does not exist");
             }
 
             // Check if password matches to username
-            if (!passwordMatch(password,userFile)){
+            if (!passwordMatchUser(password,userFile)){
                 validLogIn = false;
                 System.out.println("Not correct password");
             }
 
             // Load main page if valid login
             if (validLogIn){
-                Global.currentUserFile = userFile;
+                Global.currentUserFile = userFile; // set current user
                 Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
                 super.loadMainPage(stage);
             }
@@ -71,24 +71,6 @@ public class LoginPageController extends FileManager {
         } catch (IOException e){
             e.printStackTrace();
         }
-    }
-
-    private boolean passwordMatch(@NotNull String password, @NotNull File file) throws IOException {
-        BufferedReader reader = new BufferedReader(new FileReader(file));
-        boolean passwordMatch = false;
-
-        String line;
-        while ((line=reader.readLine())!=null){
-            if (line.contains("password:")){
-                line=line.replace("password:","");
-                int lastIndex = line.indexOf(',');
-
-                String newLine = line.substring(0,lastIndex);
-                if (newLine.matches(password))
-                    passwordMatch=true;
-            }
-        }
-        return passwordMatch;
     }
 
     public void forgotPassword(ActionEvent event){

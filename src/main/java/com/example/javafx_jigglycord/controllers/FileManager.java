@@ -1,5 +1,7 @@
 package com.example.javafx_jigglycord.controllers;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.io.*;
 
 public abstract class FileManager extends Controller{
@@ -58,5 +60,25 @@ public abstract class FileManager extends Controller{
         }
         return resultString;
     }
+
+
+    protected boolean passwordMatchUser(@NotNull String password, @NotNull File file) throws IOException {
+        BufferedReader reader = new BufferedReader(new FileReader(file));
+        boolean passwordMatch = false;
+
+        String line;
+        while ((line=reader.readLine())!=null){
+            if (line.contains("password:")){
+                line=line.replace("password:","");
+                int lastIndex = line.indexOf(',');
+
+                line = line.substring(0,lastIndex);
+                if (line.matches(password))
+                    passwordMatch=true;
+            }
+        }
+        return passwordMatch;
+    }
+
 
 }

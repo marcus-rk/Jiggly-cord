@@ -36,13 +36,10 @@ public class SignUpController extends Controller {
     /**
      * Creating new user by getting username, email and password.
      * @param event click on 'Create user'
-     * @throws IOException ...
      */
-    public void signUpUser(ActionEvent event) throws IOException {
-        // TODO: Save all data correctly (password)
+    public void signUpUser(ActionEvent event) {
         // TODO: Tell user if any errors
         // TODO: Do better username,email and password check
-        // TODO: Make writers more efficient
 
         String username = signUpUserField.getText();
         String email = signUpEmailField.getText();

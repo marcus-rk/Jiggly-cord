@@ -37,6 +37,9 @@ public class UserController extends FileManager {
     public String getUsername() {
         return username;
     }
+    public String getEmail() {
+        return email;
+    }
 
     protected static UserController getUserFromFile(@NotNull File userFile) throws IOException {
         String readUsername = readTagFromFile(userFile,Tag.USERNAME);
@@ -46,7 +49,7 @@ public class UserController extends FileManager {
     }
 
     /**
-     * Check if userFile/username matches with password
+     * Check if userFile/user matches with password current user (online)
      * @return true: if userfile matches with currentUsers password
      *         false: if userfile do not match with currentUsers password
      * @throws IOException StackTrace
