@@ -1,0 +1,39 @@
+#topPane{
+    -fx-background-color: #3d4d56;
+    -fx-border-width: 0 0 1 0;
+    -fx-border-color: #000000;
+}
+
+#writePane {
+    -fx-background-color: #3d4d56;
+    -fx-border-width: 1 0 0 0;
+    -fx-border-color: #000000;
+}
+
+#channelVBOX {
+    -fx-background-color: #36434a;
+    -fx-border-width: 0 1 0 0;
+    -fx-border-color: #000000;
+}
+
+#chatVBOX {
+    -fx-background-color: #2f3b42;
+    -fx-border-width: 0 1 0 0;
+    -fx-border-color: #000000;
+}
+
+#dialogVBOX {
+    -fx-background-color: #36434a;
+}
+
+#dialogPane {
+    -fx-background-color: #00797a;
+    -fx-border-width: 5px;
+    -fx-border-color: #01898a;
+    -fx-alignment: top-left;
+}
+
+#dialogPaneText {
+    -fx-text-fill: #ffffff;
+    -fx-font-size: 18;
+}
