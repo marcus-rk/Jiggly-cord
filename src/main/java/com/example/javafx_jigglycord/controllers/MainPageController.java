@@ -21,9 +21,10 @@ public class MainPageController extends Controller {
 
 
     public void sendMessage() throws IOException {
-        textField.getText();
+        if(textField.getText().length() != 0){
         addDialogBoxToVBOX(textField.getText());
         textField.clear();
+        }
     }
 
     @FXML
