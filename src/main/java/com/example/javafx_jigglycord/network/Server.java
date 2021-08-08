@@ -5,19 +5,12 @@ import java.net.ServerSocket;
 import java.net.Socket;
 
 public final class Server {
+    private static Server server;
     private String ip;
     private int port;
+    private String endTag;
 
-    public String getIp() {
-        return ip;
-    }
-    public int getPort() {
-        return port;
-    }
-
-    public Server(String ip,int port) {
-        this.ip = ip;
-        this.port = port;
+    private Server(){
     }
 
     public void startServer() throws IOException {
@@ -29,7 +22,7 @@ public final class Server {
         BufferedWriter bufferedWriter = null;
         ServerSocket serverSocket = null;
 
-        // Socket to run as server - same port for Client
+        // Socket to run as server
         serverSocket = new ServerSocket(port);
 
         while (true){
@@ -54,7 +47,7 @@ public final class Server {
                     bufferedWriter.newLine();
                     bufferedWriter.flush();
 
-                    if (messageFromClient.equalsIgnoreCase("BYE BITCH"))
+                    if (messageFromClient.equalsIgnoreCase(endTag))
                         break;
 
                 }
@@ -70,9 +63,37 @@ public final class Server {
             }
 
         }
+    }
 
+    public static Server getServer(){
+        if(server == null){
+            server = new Server();
+        }
+        return server;
+    }
 
+    public String getIp() {
+        return ip;
+    }
 
+    public void setIp(String ip) {
+        this.ip = ip;
+    }
+
+    public int getPort() {
+        return port;
+    }
+
+    public void setPort(int port) {
+        this.port = port;
+    }
+
+    public String getEndTag() {
+        return endTag;
+    }
+
+    public void setEndTag(String endTag) {
+        this.endTag = endTag;
     }
 
 }

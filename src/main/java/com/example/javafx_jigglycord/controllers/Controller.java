@@ -13,7 +13,7 @@ import java.io.IOException;
 /**
  * Super Controller class made for more general controller methods for now.
  */
-public class Controller {
+public abstract class Controller {
 
     protected UserController getCurrentUserController() throws IOException {
         return UserController.getUserFromFile(Global.currentUserFile);

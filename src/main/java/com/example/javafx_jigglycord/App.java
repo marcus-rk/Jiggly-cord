@@ -1,5 +1,6 @@
 package com.example.javafx_jigglycord;
 
+import com.example.javafx_jigglycord.network.Server;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -19,6 +20,12 @@ public class App extends Application {
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("loginPage/LoginPage.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
+
+        // Start and setup server
+        Server.getServer().setIp("localhost");
+        Server.getServer().setPort(1234);
+        Server.getServer().setEndTag("BYE");
+        Server.getServer().startServer();
 
         // Settings to application window
         stage.setResizable(false);

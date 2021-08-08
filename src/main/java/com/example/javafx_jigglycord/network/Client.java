@@ -7,15 +7,19 @@ import java.util.Scanner;
 public class Client {
     private String clientName;
     private Server server;
-    private int port;
+    private String serverIp;
+    private int serverPort;
+    private String endTag;
 
     public Client(String clientName, Server server) {
         this.clientName = clientName;
         this.server = server;
+        this.serverIp = server.getIp();
+        this.serverPort = server.getPort();
+        this.endTag = server.getEndTag();
     }
 
     public void startClient() {
-
 
         // Communication is between socket-socket
         Socket socket = null;
@@ -30,8 +34,9 @@ public class Client {
 
 
         try{
+
             // IP address of server (localhost) and TCP port
-            socket = new Socket("localhost",1234);
+            socket = new Socket(serverIp,serverPort);
 
             // Read from server and output to server.
             inputStreamReader = new InputStreamReader(socket.getInputStream());
@@ -52,7 +57,7 @@ public class Client {
                 System.out.println("Server: " + bufferedReader.readLine());
 
                 // Message to send if you want to end connection to server
-                if (message.equalsIgnoreCase("BYE BITCH"))
+                if (message.equalsIgnoreCase(endTag))
                     break;
             }
 
