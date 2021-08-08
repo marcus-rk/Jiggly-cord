@@ -4,6 +4,8 @@ import javafx.fxml.FXML;
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
@@ -19,6 +21,10 @@ public class MainPageController extends Controller {
     @FXML
     private TextField textField;
 
+    public void enter(KeyEvent e) throws IOException {
+        if (e.getCode() == KeyCode.ENTER)
+        sendMessage();
+    }
 
     public void sendMessage() throws IOException {
         if(textField.getText().length() != 0){

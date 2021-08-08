@@ -29,7 +29,7 @@
       <VBox fx:id="dialogVBOX" layoutX="342.0" layoutY="90.0" prefHeight="621.0" prefWidth="758.0" />
       <Pane id="writePane" layoutX="342.0" layoutY="711.0" prefHeight="90.0" prefWidth="758.0">
          <children>
-            <TextField id="textField" fx:id="textField" layoutX="24.0" layoutY="33.0" prefHeight="25.0" prefWidth="661.0" />
+            <TextField id="textField" fx:id="textField" layoutX="24.0" layoutY="33.0" onKeyPressed="#enter" prefHeight="25.0" prefWidth="661.0" />
             <Button id="sendButton" fx:id="sendButton" layoutX="691.0" layoutY="33.0" mnemonicParsing="false" onAction="#sendMessage" prefHeight="25.0" prefWidth="46.0" style="-fx-background-color: #f8d9e0;" text="Send" />
          </children>
       </Pane>
