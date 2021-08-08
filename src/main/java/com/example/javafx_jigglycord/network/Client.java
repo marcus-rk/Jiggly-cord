@@ -5,8 +5,17 @@ import java.net.Socket;
 import java.util.Scanner;
 
 public class Client {
+    private String clientName;
+    private Server server;
+    private int port;
 
-    public static void main(String[] args) {
+    public Client(String clientName, Server server) {
+        this.clientName = clientName;
+        this.server = server;
+    }
+
+    public void startClient() {
+
 
         // Communication is between socket-socket
         Socket socket = null;

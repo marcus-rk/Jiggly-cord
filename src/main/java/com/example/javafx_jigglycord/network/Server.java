@@ -4,9 +4,23 @@ import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
 
-public class Server {
+public final class Server {
+    private String ip;
+    private int port;
 
-    public static void main(String[] args) throws IOException {
+    public String getIp() {
+        return ip;
+    }
+    public int getPort() {
+        return port;
+    }
+
+    public Server(String ip,int port) {
+        this.ip = ip;
+        this.port = port;
+    }
+
+    public void startServer() throws IOException {
 
         Socket socket = null;
         InputStreamReader inputStreamReader = null;
@@ -16,7 +30,7 @@ public class Server {
         ServerSocket serverSocket = null;
 
         // Socket to run as server - same port for Client
-        serverSocket = new ServerSocket(1234);
+        serverSocket = new ServerSocket(port);
 
         while (true){
 
