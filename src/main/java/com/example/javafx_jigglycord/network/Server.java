@@ -6,16 +6,16 @@ import java.net.Socket;
 
 public class Server {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
 
         Socket socket = null;
         InputStreamReader inputStreamReader = null;
         OutputStreamWriter outputStreamWriter = null;
         BufferedReader bufferedReader = null;
         BufferedWriter bufferedWriter = null;
-
-        // WRITE COMMENT HERE
         ServerSocket serverSocket = null;
+
+        serverSocket = new ServerSocket(1234);
 
         while (true){
 
