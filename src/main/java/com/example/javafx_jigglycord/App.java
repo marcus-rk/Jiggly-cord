@@ -11,7 +11,7 @@ import java.io.IOException;
 
 public class App extends Application {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         launch(args);
     }
 
@@ -20,12 +20,6 @@ public class App extends Application {
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("loginPage/LoginPage.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
-
-        // Start and setup server
-        Server.getServer().setIp("localhost");
-        Server.getServer().setPort(1234);
-        Server.getServer().setEndTag("BYE");
-        Server.getServer().startServer();
 
         // Settings to application window
         stage.setResizable(false);
@@ -43,5 +37,13 @@ public class App extends Application {
         // Should always be at the end of the start-method
         stage.setScene(scene);
         stage.show();
+
+        // Start and setup server
+        Server.getServer().setIp("localhost");
+        Server.getServer().setPort(1111);
+        Server.getServer().setEndTag("BYE");
+        // Server.getServer().startServer();
+        // Look into mulit-thread
+
     }
 }

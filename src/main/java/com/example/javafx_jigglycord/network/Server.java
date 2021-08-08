@@ -24,6 +24,7 @@ public final class Server {
 
         // Socket to run as server
         serverSocket = new ServerSocket(port);
+        System.out.println("---SERVER STARTED---");
 
         while (true){
 

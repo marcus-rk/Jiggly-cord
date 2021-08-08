@@ -1,5 +1,7 @@
 package com.example.javafx_jigglycord.network;
 
+import com.example.javafx_jigglycord.App;
+
 import java.io.*;
 import java.net.Socket;
 import java.util.Scanner;
@@ -17,6 +19,7 @@ public class Client {
         this.serverIp = server.getIp();
         this.serverPort = server.getPort();
         this.endTag = server.getEndTag();
+        System.out.println("---NEW CLIENT CREATED---");
     }
 
     public void startClient() {
@@ -36,6 +39,7 @@ public class Client {
         try{
 
             // IP address of server (localhost) and TCP port
+            System.out.println(serverIp + ":" + serverPort);
             socket = new Socket(serverIp,serverPort);
 
             // Read from server and output to server.
@@ -46,6 +50,8 @@ public class Client {
 
             // Scanner read from keyboard
             Scanner scanner = new Scanner(System.in);
+
+            System.out.println("---CLIENT CONNECTED---");
 
             while (true){
 
