@@ -15,6 +15,7 @@ public class Server {
         BufferedWriter bufferedWriter = null;
         ServerSocket serverSocket = null;
 
+        // Socket to run as server
         serverSocket = new ServerSocket(1234);
 
         while (true){
