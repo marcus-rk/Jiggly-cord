@@ -6,7 +6,7 @@ import java.io.*;
 import java.net.Socket;
 import java.util.Scanner;
 
-public class Client {
+public class Client extends Thread {
     private String clientName;
     private Server server;
     private String serverIp;
@@ -22,7 +22,8 @@ public class Client {
         System.out.println("---NEW CLIENT CREATED---");
     }
 
-    public void startClient() {
+    @Override
+    public void run() {
 
         // Communication is between socket-socket
         Socket socket = null;

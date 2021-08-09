@@ -65,7 +65,7 @@ public class LoginPageController extends FileManager {
             if (validLogIn){
                 Global.currentUserFile = userFile; // set current user
                 Global.currentClient = new Client(username, Server.getServer()); // Create new Client
-                Global.currentClient.startClient(); // Start new Client
+                Global.currentClient.start(); // Start new Client
 
                 Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
                 super.loadMainPage(stage);

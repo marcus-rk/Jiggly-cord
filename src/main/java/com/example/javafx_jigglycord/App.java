@@ -18,6 +18,16 @@ public class App extends Application {
     //TODO: Make controllers change to their own scenes
     @Override
     public void start(Stage stage) throws IOException {
+
+        // Start and setup server
+        Server server = Server.getServer();
+        server.setIp("localhost");
+        server.setPort(1111);
+        server.setEndTag("BYE");
+        System.out.println(server.getIp() + ":" + server.getPort() + " || TAG:" + server.getEndTag());
+        server.start();
+
+        // Loading XML file for Login Page
         FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("loginPage/LoginPage.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
 
@@ -37,13 +47,5 @@ public class App extends Application {
         // Should always be at the end of the start-method
         stage.setScene(scene);
         stage.show();
-
-        // Start and setup server
-        Server.getServer().setIp("localhost");
-        Server.getServer().setPort(1111);
-        Server.getServer().setEndTag("BYE");
-        // Server.getServer().startServer();
-        // Look into mulit-thread
-
     }
 }

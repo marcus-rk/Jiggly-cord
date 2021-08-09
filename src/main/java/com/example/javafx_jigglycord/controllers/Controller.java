@@ -28,6 +28,7 @@ public abstract class Controller {
         newScene.getStylesheets().add(mainPageCSS);
 
         stage.setScene(newScene);
+        stage.setFullScreen(true); // ONLY BECAUSE OF MAC 12' SCREEN
         stage.show();
     }
 

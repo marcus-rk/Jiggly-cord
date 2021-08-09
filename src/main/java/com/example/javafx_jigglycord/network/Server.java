@@ -4,16 +4,14 @@ import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
 
-public final class Server {
+public final class Server extends Thread{
     private static Server server;
     private String ip;
     private int port;
     private String endTag;
 
-    private Server(){
-    }
-
-    public void startServer() throws IOException {
+    @Override
+    public void run() {
 
         Socket socket = null;
         InputStreamReader inputStreamReader = null;
@@ -23,7 +21,11 @@ public final class Server {
         ServerSocket serverSocket = null;
 
         // Socket to run as server
-        serverSocket = new ServerSocket(port);
+        try {
+            serverSocket = new ServerSocket(port);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         System.out.println("---SERVER STARTED---");
 
         while (true){
