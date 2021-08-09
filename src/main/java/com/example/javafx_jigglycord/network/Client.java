@@ -1,12 +1,29 @@
 package com.example.javafx_jigglycord.network;
 
+import com.example.javafx_jigglycord.App;
+
 import java.io.*;
 import java.net.Socket;
 import java.util.Scanner;
 
-public class Client {
+public class Client extends Thread {
+    private String clientName;
+    private Server server;
+    private String serverIp;
+    private int serverPort;
+    private String endTag;
 
-    public static void main(String[] args) {
+    public Client(String clientName, Server server) {
+        this.clientName = clientName;
+        this.server = server;
+        this.serverIp = server.getIp();
+        this.serverPort = server.getPort();
+        this.endTag = server.getEndTag();
+        System.out.println("---NEW CLIENT CREATED---");
+    }
+
+    @Override
+    public void run() {
 
         // Communication is between socket-socket
         Socket socket = null;
@@ -21,8 +38,10 @@ public class Client {
 
 
         try{
+
             // IP address of server (localhost) and TCP port
-            socket = new Socket("localhost",1234);
+            System.out.println(serverIp + ":" + serverPort);
+            socket = new Socket(serverIp,serverPort);
 
             // Read from server and output to server.
             inputStreamReader = new InputStreamReader(socket.getInputStream());
@@ -32,6 +51,8 @@ public class Client {
 
             // Scanner read from keyboard
             Scanner scanner = new Scanner(System.in);
+
+            System.out.println("---CLIENT CONNECTED---");
 
             while (true){
 
@@ -43,7 +64,7 @@ public class Client {
                 System.out.println("Server: " + bufferedReader.readLine());
 
                 // Message to send if you want to end connection to server
-                if (message.equalsIgnoreCase("BYE BITCH"))
+                if (message.equalsIgnoreCase(endTag))
                     break;
             }
 
@@ -63,6 +84,7 @@ public class Client {
                     bufferedReader.close();
                 if(bufferedWriter != null)
                     bufferedWriter.close();
+                System.out.println("---CLIENT DISCONNECTED---");
             } catch (IOException e) {
                 e.printStackTrace();
             }

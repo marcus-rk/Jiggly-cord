@@ -13,7 +13,7 @@ import java.io.IOException;
 /**
  * Super Controller class made for more general controller methods for now.
  */
-public class Controller {
+public abstract class Controller {
 
     protected UserController getCurrentUserController() throws IOException {
         return UserController.getUserFromFile(Global.currentUserFile);
@@ -28,6 +28,7 @@ public class Controller {
         newScene.getStylesheets().add(mainPageCSS);
 
         stage.setScene(newScene);
+        stage.setFullScreen(true); // ONLY BECAUSE OF MAC 12' SCREEN
         stage.show();
     }
 

@@ -1,6 +1,8 @@
 package com.example.javafx_jigglycord.controllers;
 
 import com.example.javafx_jigglycord.Global;
+import com.example.javafx_jigglycord.network.Client;
+import com.example.javafx_jigglycord.network.Server;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
@@ -62,6 +64,9 @@ public class LoginPageController extends FileManager {
             // Load main page if valid login
             if (validLogIn){
                 Global.currentUserFile = userFile; // set current user
+                Global.currentClient = new Client(username, Server.getServer()); // Create new Client
+                Global.currentClient.start(); // Start new Client
+
                 Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
                 super.loadMainPage(stage);
             }

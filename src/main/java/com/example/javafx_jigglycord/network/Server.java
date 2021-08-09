@@ -4,9 +4,14 @@ import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
 
-public class Server {
+public final class Server extends Thread{
+    private static Server server;
+    private String ip;
+    private int port;
+    private String endTag;
 
-    public static void main(String[] args) throws IOException {
+    @Override
+    public void run() {
 
         Socket socket = null;
         InputStreamReader inputStreamReader = null;
@@ -15,8 +20,13 @@ public class Server {
         BufferedWriter bufferedWriter = null;
         ServerSocket serverSocket = null;
 
-        // Socket to run as server - same port for Client
-        serverSocket = new ServerSocket(1234);
+        // Socket to run as server
+        try {
+            serverSocket = new ServerSocket(port);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        System.out.println("---SERVER STARTED---");
 
         while (true){
 
@@ -30,6 +40,7 @@ public class Server {
                 bufferedReader = new BufferedReader(inputStreamReader);
                 bufferedWriter = new BufferedWriter(outputStreamWriter);
 
+                // TODO: MAKE CLIENT MANAGER
                 while (true){
 
                     String messageFromClient = bufferedReader.readLine();
@@ -40,7 +51,7 @@ public class Server {
                     bufferedWriter.newLine();
                     bufferedWriter.flush();
 
-                    if (messageFromClient.equalsIgnoreCase("BYE BITCH"))
+                    if (messageFromClient.equalsIgnoreCase(endTag))
                         break;
 
                 }
@@ -51,14 +62,44 @@ public class Server {
                 bufferedReader.close();
                 bufferedWriter.close();
 
+                System.out.println("---SERVER ENDED---");
+
             } catch (IOException e) {
                 e.printStackTrace();
             }
 
         }
+    }
 
+    public static Server getServer(){
+        if(server == null){
+            server = new Server();
+        }
+        return server;
+    }
 
+    public String getIp() {
+        return ip;
+    }
 
+    public void setIp(String ip) {
+        this.ip = ip;
+    }
+
+    public int getPort() {
+        return port;
+    }
+
+    public void setPort(int port) {
+        this.port = port;
+    }
+
+    public String getEndTag() {
+        return endTag;
+    }
+
+    public void setEndTag(String endTag) {
+        this.endTag = endTag;
     }
 
 }
