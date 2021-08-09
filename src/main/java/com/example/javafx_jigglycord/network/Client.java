@@ -84,6 +84,7 @@ public class Client extends Thread {
                     bufferedReader.close();
                 if(bufferedWriter != null)
                     bufferedWriter.close();
+                System.out.println("---CLIENT DISCONNECTED---");
             } catch (IOException e) {
                 e.printStackTrace();
             }

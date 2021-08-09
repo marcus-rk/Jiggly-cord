@@ -40,6 +40,7 @@ public final class Server extends Thread{
                 bufferedReader = new BufferedReader(inputStreamReader);
                 bufferedWriter = new BufferedWriter(outputStreamWriter);
 
+                // TODO: MAKE CLIENT MANAGER
                 while (true){
 
                     String messageFromClient = bufferedReader.readLine();
@@ -60,6 +61,8 @@ public final class Server extends Thread{
                 outputStreamWriter.close();
                 bufferedReader.close();
                 bufferedWriter.close();
+
+                System.out.println("---SERVER ENDED---");
 
             } catch (IOException e) {
                 e.printStackTrace();
