@@ -24,7 +24,7 @@ public class App extends Application {
         server.setIp("localhost");
         server.setPort(1111);
         server.setEndTag("BYE");
-        System.out.println(server.getIp() + ":" + server.getPort() + " || TAG:" + server.getEndTag());
+        // System.out.println(server.getIp() + ":" + server.getPort() + " || TAG:" + server.getEndTag());
         server.start();
 
         // Loading XML file for Login Page
