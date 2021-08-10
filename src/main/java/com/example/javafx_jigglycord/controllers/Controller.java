@@ -5,6 +5,7 @@ import com.example.javafx_jigglycord.Global;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 import org.jetbrains.annotations.NotNull;
 
@@ -14,6 +15,8 @@ import java.io.IOException;
  * Super Controller class made for more general controller methods for now.
  */
 public abstract class Controller {
+
+    public void enter(KeyEvent e) throws IOException {}
 
     protected UserController getCurrentUserController() throws IOException {
         return UserController.getUserFromFile(Global.currentUserFile);

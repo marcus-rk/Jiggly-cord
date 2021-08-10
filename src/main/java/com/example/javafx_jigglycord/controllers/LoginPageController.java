@@ -9,6 +9,8 @@ import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 
 import java.io.*;
@@ -37,6 +39,12 @@ public class LoginPageController extends FileManager {
     public void signUp(ActionEvent event) throws IOException {
         Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         super.loadSignUpPage(stage);
+    }
+
+    @Override
+    public void enter(KeyEvent e) throws IOException {
+        if (e.getCode() == KeyCode.ENTER)
+            loginButton.fire();
     }
 
     public void login(ActionEvent event) throws IOException {

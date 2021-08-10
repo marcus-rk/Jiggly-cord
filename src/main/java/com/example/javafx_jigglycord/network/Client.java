@@ -40,7 +40,7 @@ public class Client extends Thread {
         try{
 
             // IP address of server (localhost) and TCP port
-            System.out.println(serverIp + ":" + serverPort);
+            System.out.println("--- CLIENT JOIN ["+serverIp + ":" + serverPort+"]---");
             socket = new Socket(serverIp,serverPort);
 
             // Read from server and output to server.

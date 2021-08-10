@@ -21,6 +21,7 @@ public class MainPageController extends Controller {
     @FXML
     private TextField textField;
 
+    @Override
     public void enter(KeyEvent e) throws IOException {
         if (e.getCode() == KeyCode.ENTER)
         sendMessage();

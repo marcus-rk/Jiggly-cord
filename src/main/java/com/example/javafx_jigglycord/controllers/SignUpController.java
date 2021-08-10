@@ -3,7 +3,10 @@ package com.example.javafx_jigglycord.controllers;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
+import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 import org.jetbrains.annotations.NotNull;
 
@@ -22,6 +25,8 @@ public class SignUpController extends Controller {
     private TextField signUpPasswordField;
     @FXML
     private TextField signUpRePasswordField;
+    @FXML
+    private Button createUserButton;
 
     /**
      * Takes the user back to the login page
@@ -31,6 +36,12 @@ public class SignUpController extends Controller {
     public void backToLogInPage(ActionEvent event) throws IOException {
         Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         super.loadLogIn(stage);
+    }
+
+    @Override
+    public void enter(KeyEvent e) throws IOException {
+        if (e.getCode() == KeyCode.ENTER)
+            createUserButton.fire();
     }
 
     /**
