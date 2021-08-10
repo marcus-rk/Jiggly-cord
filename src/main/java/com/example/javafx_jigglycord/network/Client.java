@@ -1,7 +1,5 @@
 package com.example.javafx_jigglycord.network;
 
-import com.example.javafx_jigglycord.App;
-
 import java.io.*;
 import java.net.Socket;
 import java.util.Scanner;
@@ -50,24 +48,33 @@ public class Client extends Thread {
             bufferedWriter = new BufferedWriter(outputStreamWriter);
 
             // Scanner read from keyboard
-            Scanner scanner = new Scanner(System.in);
+            File messageFile = new File("src/main/resources/message/messages.txt");
+            BufferedReader reader = new BufferedReader(new FileReader(messageFile));
+            reader.mark(0);
+            FileWriter writer = new FileWriter(messageFile);
+            //Scanner scanner = new Scanner(System.in);
 
             System.out.println("---CLIENT CONNECTED---");
 
             while (true){
 
-                String message = scanner.nextLine();
-                bufferedWriter.write(message);
-                bufferedWriter.newLine(); // newline so that server knows when message stops
-                bufferedWriter.flush(); // Forces buffer to flush
+                if (reader.ready()){
+                    String message = reader.readLine();
 
-                System.out.println("Server: " + bufferedReader.readLine());
+                    if (message != null && !message.equals("")) {
+                        bufferedWriter.write(message);
+                        bufferedWriter.newLine(); // newline so that server knows when message stops
+                        bufferedWriter.flush(); // Forces buffer to flush
+                    }
 
-                // Message to send if you want to end connection to server
-                if (message.equalsIgnoreCase(endTag))
-                    break;
+                    System.out.println("Server: " + bufferedReader.readLine());
+
+                    // Message to send if you want to end connection to server
+                    if (message != null && message.equalsIgnoreCase(endTag)) break;
+                    writer.write("");
+                }
             }
-
+            writer.close();
         }  catch (IOException e) {
             e.printStackTrace();
         } finally {

@@ -10,7 +10,7 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 
-import java.io.IOException;
+import java.io.*;
 
 /**
  * Controller that controls the (whole) main page of the application for now.
@@ -30,6 +30,7 @@ public class MainPageController extends Controller {
     public void sendMessage() throws IOException {
         if(textField.getText().length() != 0){
         addDialogBoxToVBOX(textField.getText());
+        writeToUserFile(textField.getText());
         textField.clear();
         }
     }
@@ -57,6 +58,16 @@ public class MainPageController extends Controller {
         pane.getChildren().add(text);
 
         return pane;
+    }
+
+    protected void writeToUserFile(String text) throws IOException {
+        FileWriter fileWriter = new FileWriter("src/main/resources/message/messages.txt");
+
+        // Overwrites .txt file
+        fileWriter.write(text);
+
+        // Can be done for global writers maybe
+        fileWriter.close();
     }
 
 }

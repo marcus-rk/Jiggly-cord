@@ -51,7 +51,7 @@ public final class Server extends Thread{
                     bufferedWriter.newLine();
                     bufferedWriter.flush();
 
-                    if (messageFromClient.equalsIgnoreCase(endTag))
+                    if (messageFromClient != null && messageFromClient.equals(endTag))
                         break;
 
                 }
